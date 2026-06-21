@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习任务 & 番茄钟记录</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 学习任务 & 番茄钟</h1>
+            <nav>
+                <button class="nav-btn active" data-tab="tasks">任务列表</button>
+                <button class="nav-btn" data-tab="stats">统计</button>
+            </nav>
+        </header>
+
+        <section id="tasks-tab" class="tab-content active">
+            <div class="controls">
+                <div class="view-switch">
+                    <button class="view-btn active" data-view="all">全部任务</button>
+                    <button class="view-btn" data-view="day">今日任务</button>
+                </div>
+                <div class="date-picker">
+                    <label>选择日期:</label>
+                    <input type="date" id="date-input">
+                </div>
+                <button class="btn-primary" id="add-task-btn">+ 添加任务</button>
+            </div>
+
+            <div id="task-list" class="task-list"></div>
+        </section>
+
+        <section id="stats-tab" class="tab-content">
+            <div class="stats-controls">
+                <label>选择月份:</label>
+                <input type="month" id="stats-month">
+            </div>
+            <div id="stats-content" class="stats-content"></div>
+        </section>
+    </div>
+
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modal-title">添加学习任务</h2>
+            <form id="task-form">
+                <div class="form-group">
+                    <label>任务标题 *</label>
+                    <input type="text" id="task-title" required>
+                </div>
+                <div class="form-group">
+                    <label>科目分类</label>
+                    <input type="text" id="task-subject" placeholder="如：数学、英语、编程">
+                </div>
+                <div class="form-group">
+                    <label>计划日期</label>
+                    <input type="date" id="task-date">
+                </div>
+                <div class="form-group">
+                    <label>预计用时(分钟)</label>
+                    <input type="number" id="task-estimated" value="30" min="1">
+                </div>
+                <div class="form-group">
+                    <label>备注</label>
+                    <textarea id="task-notes" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancel-task">取消</button>
+                    <button type="submit" class="btn-primary">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="record-modal" class="modal">
+        <div class="modal-content">
+            <h2>添加学习记录</h2>
+            <p id="record-task-title" class="record-task-title"></p>
+            <form id="record-form">
+                <div class="form-group">
+                    <label>开始时间</label>
+                    <input type="datetime-local" id="record-start">
+                </div>
+                <div class="form-group">
+                    <label>学习分钟数</label>
+                    <input type="number" id="record-duration" value="25" min="1">
+                </div>
+                <div class="form-group">
+                    <label>学习总结</label>
+                    <textarea id="record-summary" rows="3" placeholder="这次学习了什么？"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancel-record">取消</button>
+                    <button type="submit" class="btn-primary">保存记录</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
